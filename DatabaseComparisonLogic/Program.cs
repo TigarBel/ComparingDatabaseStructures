@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Data;
 using DatabaseComparisonLogic.Connector;
+using DatabaseComparisonLogic.Comparison;
 
 namespace DatabaseComparisonLogic
 {
@@ -14,10 +15,24 @@ namespace DatabaseComparisonLogic
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Read the file nameb of datebase:");
-            string dataBaseFileName = Console.ReadLine();
+            Console.WriteLine("Read the file name of datebase: (database.db)");
+            string firstDataBaseFileName = Console.ReadLine();
+            Console.WriteLine("Read the file name of datebase: (database.db)");
+            string secondDataBaseFileName = Console.ReadLine();
 
-            ConnectorSQlite connectorSQlite = new ConnectorSQlite(dataBaseFileName);
+            ConnectorSQlite firstConnectorSQlite;
+            ConnectorSQlite secondConnectorSQlite;
+            if (File.Exists(firstDataBaseFileName) && File.Exists(secondDataBaseFileName))
+            {
+                firstConnectorSQlite = new ConnectorSQlite(firstDataBaseFileName);
+                secondConnectorSQlite = new ConnectorSQlite(secondDataBaseFileName);
+                ComparisonTables comparisonTables = new ComparisonTables(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+                ComparisonColumns comparisonColumns = new ComparisonColumns(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+            }
+            else
+            {
+                Console.WriteLine("These databases are missing!");
+            }
 
             Console.ReadKey();
         }

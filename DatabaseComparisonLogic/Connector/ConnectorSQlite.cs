@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DatabaseComparisonLogic.Connector
 {
@@ -19,21 +15,32 @@ namespace DatabaseComparisonLogic.Connector
         public ConnectorSQlite(string dbFileName)
         {
             DataBaseFileName = dbFileName;
+            Commad = new SQLiteCommand();
             try
             {
                 DataBase = new SQLiteConnection("Data Source=" + DataBaseFileName + ";Version=3;");
-                DataBase.Open();
                 Commad.Connection = DataBase;
-                Console.WriteLine("database open");
 
-                DataBase.Close();
-                Console.WriteLine("database close");
+                Open();
+                Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Error connection");
             }
+        }
+
+        public void Open()
+        {
+            DataBase.Open();
+            Console.WriteLine("database open");
+        }
+
+        public void Close()
+        {
+            DataBase.Close();
+            Console.WriteLine("database close");
         }
 
         public string DataBaseFileName { get; set; }
