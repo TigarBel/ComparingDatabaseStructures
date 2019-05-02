@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 using System.Data;
+using DatabaseComparisonLogic.Connector;
 
 namespace DatabaseComparisonLogic
 {
@@ -13,30 +14,10 @@ namespace DatabaseComparisonLogic
     {
         static void Main(string[] args)
         {
-            SQLiteConnection _dataBase = new SQLiteConnection();
-            SQLiteCommand __dataBaseCommand = new SQLiteCommand();
-            string _dbFileName;
-
             Console.WriteLine("Read the file nameb of datebase:");
-            _dbFileName = Console.ReadLine();
+            string dataBaseFileName = Console.ReadLine();
 
-            try
-            {
-                _dataBase = new SQLiteConnection("Data Source=" + _dbFileName + ";Version=3;");
-                _dataBase.Open();
-                __dataBaseCommand.Connection = _dataBase;
-                Console.WriteLine("database open");
-
-                ReadDataBase(_dataBase);
-
-                _dataBase.Close();
-                Console.WriteLine("database close");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Error connection");
-            }
+            ConnectorSQlite connectorSQlite = new ConnectorSQlite(dataBaseFileName);
 
             Console.ReadKey();
         }
