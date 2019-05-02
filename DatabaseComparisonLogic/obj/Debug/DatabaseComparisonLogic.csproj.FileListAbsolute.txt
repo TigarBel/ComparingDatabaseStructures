@@ -1,0 +1,11 @@
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\DatabaseComparisonLogic.exe.config
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\DatabaseComparisonLogic.exe
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\DatabaseComparisonLogic.pdb
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\System.Data.SQLite.dll
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\System.Data.SQLite.xml
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\System.Data.SQLite.dll.config
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\obj\Debug\DatabaseComparisonLogic.csprojAssemblyReference.cache
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\obj\Debug\DatabaseComparisonLogic.csproj.CoreCompileInputs.cache
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\obj\Debug\DatabaseComparisonLogic.csproj.CopyComplete
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\obj\Debug\DatabaseComparisonLogic.exe
+D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\obj\Debug\DatabaseComparisonLogic.pdb
