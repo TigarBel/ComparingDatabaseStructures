@@ -48,10 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comparison\Comparison.cs" />
+    <Compile Include="Comparison\BaseComparison.cs" />
     <Compile Include="Comparison\ComparisonColumns.cs" />
+    <Compile Include="Comparison\ComparisonIndexes.cs" />
+    <Compile Include="Comparison\ComparisonTriggers.cs" />
+    <Compile Include="Comparison\ComparisonUserFuntions.cs" />
+    <Compile Include="Comparison\ComparisonStoredProcedures.cs" />
     <Compile Include="Comparison\ComparisonTables.cs" />
+    <Compile Include="Comparison\ComparisonViews.cs" />
     <Compile Include="Comparison\IComparable.cs" />
+    <Compile Include="Comparison\Querys\SqlQueryColumn.cs" />
+    <Compile Include="Comparison\Writers\DifferenceTableWriter.cs" />
     <Compile Include="Connector\ConnectorSQlite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

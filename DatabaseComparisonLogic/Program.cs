@@ -8,6 +8,7 @@ using System.IO;
 using System.Data;
 using DatabaseComparisonLogic.Connector;
 using DatabaseComparisonLogic.Comparison;
+using DatabaseComparisonLogic.Comparison.Writers;
 
 namespace DatabaseComparisonLogic
 {
@@ -26,8 +27,22 @@ namespace DatabaseComparisonLogic
             {
                 firstConnectorSQlite = new ConnectorSQlite(firstDataBaseFileName);
                 secondConnectorSQlite = new ConnectorSQlite(secondDataBaseFileName);
+
                 ComparisonTables comparisonTables = new ComparisonTables(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
                 ComparisonColumns comparisonColumns = new ComparisonColumns(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+
+                DifferenceTableWriter differenceTableWriter = new DifferenceTableWriter(comparisonColumns, firstDataBaseFileName, secondDataBaseFileName);
+                differenceTableWriter.Write(11);
+
+                ComparisonViews comparisonViews = new ComparisonViews(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+
+                differenceTableWriter.Comparable = comparisonViews;
+                differenceTableWriter.Write(11);
+
+                ComparisonIndexes comparisonIndexes = new ComparisonIndexes(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+
+                differenceTableWriter.Comparable = comparisonIndexes;
+                differenceTableWriter.Write(11);
             }
             else
             {

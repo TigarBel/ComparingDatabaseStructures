@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DatabaseComparisonLogic.Comparison
 {
-    public class ComparisonTables : BaseComparison, IComparable
+    public class ComparisonViews : BaseComparison, IComparable
     {
-        private string _sqlQuery = "SELECT name FROM sqlite_master WHERE type = 'table'";
-        //SELECT COUNT(name) FROM sqlite_master WHERE type = "table"
+        private string _sqlQuery = "SELECT name FROM sqlite_master WHERE type = 'view'";
 
-        public ComparisonTables()
+        public ComparisonViews()
         {
             FirstBaseComparison = new SQLiteConnection();
             SecondBaseComparison = new SQLiteConnection();
             StructureIsDifferent = true;
         }
 
-        public ComparisonTables(SQLiteConnection firstSQLiteConnection, SQLiteConnection secondSQLiteConnection)
+        public ComparisonViews(SQLiteConnection firstSQLiteConnection, SQLiteConnection secondSQLiteConnection)
         {
             FirstBaseComparison = firstSQLiteConnection;
             SecondBaseComparison = secondSQLiteConnection;

@@ -6,12 +6,12 @@ namespace DatabaseComparisonLogic.Comparison
     /// <summary>
     /// Класс списка различий двух баз данных
     /// </summary>
-    public abstract class Comparison
+    public abstract class BaseComparison
     {
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public Comparison()
+        public BaseComparison()
         {
             ListOfAllItems = new List<string>();
             FirstListOfDifferences = new List<bool>();

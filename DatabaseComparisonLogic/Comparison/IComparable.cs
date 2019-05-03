@@ -3,6 +3,9 @@ using System.Data.SQLite;
 
 namespace DatabaseComparisonLogic.Comparison
 {
+    /// <summary>
+    /// Интерфейс для сравнения структур БД
+    /// </summary>
     public interface IComparable
     {
         /// <summary>

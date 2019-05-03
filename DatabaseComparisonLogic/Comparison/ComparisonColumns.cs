@@ -1,13 +1,16 @@
-﻿using System;
+﻿using DatabaseComparisonLogic.Comparison.Querys;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 
 namespace DatabaseComparisonLogic.Comparison
 {
-    public class ComparisonColumns : Comparison, IComparable
+    public class ComparisonColumns : BaseComparison, IComparable
     {
-        private string _sqlQuery = "select * from sqlite_master where type = 'table'";
+        private string _sqlQueryTable = "SELECT name FROM sqlite_master WHERE type = 'table'";
+
+        private SqlQueryColumn _sqlQueryColumn = new SqlQueryColumn();
 
         public ComparisonColumns()
         {
@@ -28,27 +31,29 @@ namespace DatabaseComparisonLogic.Comparison
         /// </summary>
         public void Compare()
         {
-            List<string> firstTableName = GetListNameTables(FirstBaseComparison);
-            List<string> secondTableName = GetListNameTables(SecondBaseComparison);
+            List<string> firstTableName = GetListName(FirstBaseComparison, _sqlQueryTable);
+            List<string> secondTableName = GetListName(SecondBaseComparison, _sqlQueryTable);
             ListOfAllItems = new List<string>();
+            List<string> firstColumnName = NameSticking(FirstBaseComparison, firstTableName);
+            List<string> secondColumnName = NameSticking(SecondBaseComparison, secondTableName);
 
-            foreach (string tableName in firstTableName)
+            foreach (string columnName in firstColumnName)
             {
-                ListOfAllItems.Add(tableName);
+                ListOfAllItems.Add(columnName);
             }
-            foreach (string tableName in secondTableName)
+            foreach (string columnName in secondColumnName)
             {
-                if (ListOfAllItems.Find(str => str == tableName) != tableName)
+                if (ListOfAllItems.Find(str => str == columnName) != columnName)
                 {
-                    ListOfAllItems.Add(tableName);
+                    ListOfAllItems.Add(columnName);
                 }
             }
 
             ListOfAllItems.Sort();
 
-            foreach (string tableName in ListOfAllItems)
+            foreach (string columnName in ListOfAllItems)
             {
-                if (firstTableName.Find(str => str == tableName) == tableName)
+                if (firstColumnName.Find(str => str == columnName) == columnName)
                 {
                     FirstListOfDifferences.Add(true);
                 }
@@ -57,7 +62,7 @@ namespace DatabaseComparisonLogic.Comparison
                     FirstListOfDifferences.Add(false);
                 }
 
-                if (secondTableName.Find(str => str == tableName) == tableName)
+                if (secondColumnName.Find(str => str == columnName) == columnName)
                 {
                     SecondListOfDifferences.Add(true);
                 }
@@ -81,10 +86,10 @@ namespace DatabaseComparisonLogic.Comparison
         /// </summary>
         /// <param name="baseComparison">Коннектор к базе</param>
         /// <returns>Список таблиц</returns>
-        private List<string> GetListNameTables(SQLiteConnection baseComparison)
+        private List<string> GetListName(SQLiteConnection baseComparison, string sqlQueryTable)
         {
             DataTable dataTable = new DataTable();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(_sqlQuery, baseComparison);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlQueryTable, baseComparison);
             adapter.Fill(dataTable);
             List<string> tableName = new List<string>();
 
@@ -92,12 +97,31 @@ namespace DatabaseComparisonLogic.Comparison
             {
                 for (int i = 0; i < dataTable.Rows.Count; i++)
                 {
-                    tableName.Add((string)dataTable.Rows[i].ItemArray[1]);
+                    tableName.Add((string)dataTable.Rows[i].ItemArray[0]);
                 }
             }
             else Console.WriteLine("Database is empty");
             tableName.Sort();
             return tableName;
+        }
+        /// <summary>
+        /// Список колонок из таблиц
+        /// </summary>
+        /// <param name="tableName">Список таблиц</param>
+        /// <returns>Список колонок</returns>
+        private List<string> NameSticking(SQLiteConnection baseComparison, List<string> tableName)
+        {
+            List<string> columnName = new List<string>();
+            foreach (string table in tableName)
+            {
+                _sqlQueryColumn = new SqlQueryColumn(table);
+                List<string> proxyColumnName = GetListName(baseComparison, _sqlQueryColumn.SqlQuery);
+                foreach(string column in proxyColumnName)
+                {
+                    columnName.Add(table + '.' + column);
+                }
+            }
+            return columnName;
         }
         /// <summary>
         /// Первая база к которой подключаемся

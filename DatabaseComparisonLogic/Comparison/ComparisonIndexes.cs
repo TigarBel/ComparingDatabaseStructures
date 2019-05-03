@@ -5,19 +5,18 @@ using System.Data.SQLite;
 
 namespace DatabaseComparisonLogic.Comparison
 {
-    public class ComparisonTables : BaseComparison, IComparable
+    public class ComparisonIndexes : BaseComparison, IComparable
     {
-        private string _sqlQuery = "SELECT name FROM sqlite_master WHERE type = 'table'";
-        //SELECT COUNT(name) FROM sqlite_master WHERE type = "table"
+        private string _sqlQuery = "SELECT name FROM sqlite_master WHERE type = 'index'";
 
-        public ComparisonTables()
+        public ComparisonIndexes()
         {
             FirstBaseComparison = new SQLiteConnection();
             SecondBaseComparison = new SQLiteConnection();
             StructureIsDifferent = true;
         }
 
-        public ComparisonTables(SQLiteConnection firstSQLiteConnection, SQLiteConnection secondSQLiteConnection)
+        public ComparisonIndexes(SQLiteConnection firstSQLiteConnection, SQLiteConnection secondSQLiteConnection)
         {
             FirstBaseComparison = firstSQLiteConnection;
             SecondBaseComparison = secondSQLiteConnection;
