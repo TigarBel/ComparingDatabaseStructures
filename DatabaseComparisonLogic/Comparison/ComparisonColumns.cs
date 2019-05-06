@@ -10,7 +10,7 @@ namespace DatabaseComparisonLogic.Comparison
     {
         private string _sqlQueryTable = "SELECT name FROM sqlite_master WHERE type = 'table'";
 
-        private SqlQueryColumn _sqlQueryColumn = new SqlQueryColumn();
+        private SQLiteQueryColumn _sqlQueryColumn = new SQLiteQueryColumn();
 
         public ComparisonColumns()
         {
@@ -33,7 +33,7 @@ namespace DatabaseComparisonLogic.Comparison
         {
             List<string> firstTableName = GetListName(FirstBaseComparison, _sqlQueryTable);
             List<string> secondTableName = GetListName(SecondBaseComparison, _sqlQueryTable);
-            ListOfAllItems = new List<string>();
+            //ListOfAllItems = new List<string>();
             List<string> firstColumnName = NameSticking(FirstBaseComparison, firstTableName);
             List<string> secondColumnName = NameSticking(SecondBaseComparison, secondTableName);
 
@@ -100,7 +100,7 @@ namespace DatabaseComparisonLogic.Comparison
                     tableName.Add((string)dataTable.Rows[i].ItemArray[0]);
                 }
             }
-            else Console.WriteLine("Database is empty");
+            else Console.WriteLine("Database(" + baseComparison.DataSource + ") is empty");
             tableName.Sort();
             return tableName;
         }
@@ -114,7 +114,7 @@ namespace DatabaseComparisonLogic.Comparison
             List<string> columnName = new List<string>();
             foreach (string table in tableName)
             {
-                _sqlQueryColumn = new SqlQueryColumn(table);
+                _sqlQueryColumn = new SQLiteQueryColumn(table);
                 List<string> proxyColumnName = GetListName(baseComparison, _sqlQueryColumn.SqlQuery);
                 foreach(string column in proxyColumnName)
                 {

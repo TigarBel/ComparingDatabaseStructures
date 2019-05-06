@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 using System.Data;
 using DatabaseComparisonLogic.Connector;
 using DatabaseComparisonLogic.Comparison;
 using DatabaseComparisonLogic.Comparison.Writers;
+using DatabaseComparisonLogic.UnloadingStructureToXMLs;
+using DatabaseComparisonLogic.Comparison.SQLiteComparison;
 
 namespace DatabaseComparisonLogic
 {
@@ -21,28 +19,40 @@ namespace DatabaseComparisonLogic
             Console.WriteLine("Read the file name of datebase: (database.db)");
             string secondDataBaseFileName = Console.ReadLine();
 
-            ConnectorSQlite firstConnectorSQlite;
-            ConnectorSQlite secondConnectorSQlite;
+            ConnectorSQLite firstConnectorSQlite;
+            ConnectorSQLite secondConnectorSQlite;
             if (File.Exists(firstDataBaseFileName) && File.Exists(secondDataBaseFileName))
             {
-                firstConnectorSQlite = new ConnectorSQlite(firstDataBaseFileName);
-                secondConnectorSQlite = new ConnectorSQlite(secondDataBaseFileName);
+                firstConnectorSQlite = new ConnectorSQLite(firstDataBaseFileName);
+                secondConnectorSQlite = new ConnectorSQLite(secondDataBaseFileName);
 
-                ComparisonTables comparisonTables = new ComparisonTables(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
-                ComparisonColumns comparisonColumns = new ComparisonColumns(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
-
-                DifferenceTableWriter differenceTableWriter = new DifferenceTableWriter(comparisonColumns, firstDataBaseFileName, secondDataBaseFileName);
+                SQLiteComparisonTables sQLiteComparisonTable = new SQLiteComparisonTables(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+                DifferenceTableWriter differenceTableWriter = new DifferenceTableWriter(sQLiteComparisonTable, firstDataBaseFileName, secondDataBaseFileName);
                 differenceTableWriter.Write(11);
 
-                ComparisonViews comparisonViews = new ComparisonViews(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+                //ComparisonTables comparisonTables = new ComparisonTables(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+                //ComparisonColumns comparisonColumns = new ComparisonColumns(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
 
-                differenceTableWriter.Comparable = comparisonViews;
-                differenceTableWriter.Write(11);
+                //DifferenceTableWriter differenceTableWriter = new DifferenceTableWriter(comparisonColumns, firstDataBaseFileName, secondDataBaseFileName);
+                //differenceTableWriter.Write(11);
 
-                ComparisonIndexes comparisonIndexes = new ComparisonIndexes(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+                //ComparisonViews comparisonViews = new ComparisonViews(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
 
-                differenceTableWriter.Comparable = comparisonIndexes;
-                differenceTableWriter.Write(11);
+                //differenceTableWriter.Comparable = comparisonViews;
+                //differenceTableWriter.Write(11);
+
+                //ComparisonTriggers comparisonTriggers = new ComparisonTriggers(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+
+                //differenceTableWriter.Comparable = comparisonTriggers;
+                //differenceTableWriter.Write(11);
+
+                //ComparisonIndexes comparisonIndexes = new ComparisonIndexes(firstConnectorSQlite.DataBase, secondConnectorSQlite.DataBase);
+
+                //differenceTableWriter.Comparable = comparisonIndexes;
+                //differenceTableWriter.Write(11);
+
+                //string str = @"D:\Downloads\gnivc\DatabaseComparisonLogic\DatabaseComparisonLogic\bin\Debug\db11.xml";//Заменить
+                //UnloadingStructureToXML unloading = new UnloadingStructureToXML(secondConnectorSQlite.DataBase, str);
             }
             else
             {
@@ -70,10 +80,6 @@ namespace DatabaseComparisonLogic
             }
             else
                 Console.WriteLine("Database is empty");
-
-
-            //m_sqlCmd.CommandText = "CREATE TABLE IF NOT EXISTS Catalog (id INTEGER PRIMARY KEY AUTOINCREMENT, author TEXT, book TEXT)";
-            //m_sqlCmd.ExecuteNonQuery();
         }
     }
 }

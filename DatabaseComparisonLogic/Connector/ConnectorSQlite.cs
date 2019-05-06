@@ -3,16 +3,25 @@ using System.Data.SQLite;
 
 namespace DatabaseComparisonLogic.Connector
 {
-    public class ConnectorSQlite
+    /// <summary>
+    /// Класс подключения к базе SQLite
+    /// </summary>
+    public class ConnectorSQLite
     {
-        public ConnectorSQlite()
+        /// <summary>
+        /// Пустой конструктор класса
+        /// </summary>
+        public ConnectorSQLite()
         {
             DataBaseFileName = "NONE";
             DataBase = new SQLiteConnection();
             Commad = new SQLiteCommand();
         }
-
-        public ConnectorSQlite(string dbFileName)
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        /// <param name="dbFileName">Имя файла базы данных, с типом</param>
+        public ConnectorSQLite(string dbFileName)
         {
             DataBaseFileName = dbFileName;
             Commad = new SQLiteCommand();
@@ -30,23 +39,33 @@ namespace DatabaseComparisonLogic.Connector
                 Console.WriteLine("Error connection");
             }
         }
-
+        /// <summary>
+        /// Подключится
+        /// </summary>
         public void Open()
         {
             DataBase.Open();
             Console.WriteLine("database open");
         }
-
+        /// <summary>
+        /// Отключится
+        /// </summary>
         public void Close()
         {
             DataBase.Close();
             Console.WriteLine("database close");
         }
-
+        /// <summary>
+        /// Имя файла базы данных, с типом
+        /// </summary>
         public string DataBaseFileName { get; set; }
-
+        /// <summary>
+        /// Коннектор базы SQLite
+        /// </summary>
         public SQLiteConnection DataBase { get; set; }
-
+        /// <summary>
+        /// Команда SQLite для выполнения запроса
+        /// </summary>
         public SQLiteCommand Commad { get; set; }
     }
 }

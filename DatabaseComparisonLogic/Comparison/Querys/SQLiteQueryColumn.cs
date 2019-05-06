@@ -9,12 +9,12 @@ namespace DatabaseComparisonLogic.Comparison.Querys
     /// <summary>
     /// Класс для хранения запроса для конкретной таблицы
     /// </summary>
-    public class SqlQueryColumn
+    public class SQLiteQueryColumn
     {
         /// <summary>
         /// Конструктор пустого объекта
         /// </summary>
-        public SqlQueryColumn()
+        public SQLiteQueryColumn()
         {
             SqlQuery = "SELECT name FROM PRAGMA_TABLE_INFO('table')";
         }
@@ -22,7 +22,7 @@ namespace DatabaseComparisonLogic.Comparison.Querys
         /// Конструктор заполненного объекта
         /// </summary>
         /// <param name="table">Название таблицы</param>
-        public SqlQueryColumn(string table)
+        public SQLiteQueryColumn(string table)
         {
             SqlQuery = "SELECT name FROM PRAGMA_TABLE_INFO('" + table + "')";
         }
