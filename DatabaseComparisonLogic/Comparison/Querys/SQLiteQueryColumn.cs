@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DatabaseComparisonLogic.Comparison.Querys
+﻿namespace DatabaseComparisonLogic.Comparison.Querys
 {
     /// <summary>
-    /// Класс для хранения запроса для конкретной таблицы
+    /// Класс для хранения запроса вызова наименования колонок таблицы
     /// </summary>
     public class SQLiteQueryColumn
     {
@@ -27,7 +21,7 @@ namespace DatabaseComparisonLogic.Comparison.Querys
             SqlQuery = "SELECT name FROM PRAGMA_TABLE_INFO('" + table + "')";
         }
         /// <summary>
-        /// Запрос для вывода колонок из таблицы
+        /// Запрос
         /// </summary>
         public string SqlQuery { get; set; }
     }

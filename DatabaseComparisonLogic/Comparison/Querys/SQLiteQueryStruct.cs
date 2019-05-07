@@ -14,7 +14,7 @@
             SqlQuery = "SELECT name FROM sqlite_master WHERE type = '" + nameItem + "'";
         }
         /// <summary>
-        /// Запрос для вывода колонок из таблицы
+        /// Запрос
         /// </summary>
         public string SqlQuery { get; private set; }
     }

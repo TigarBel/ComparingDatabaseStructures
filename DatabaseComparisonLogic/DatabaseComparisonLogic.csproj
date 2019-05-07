@@ -49,20 +49,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comparison\BaseComparison.cs" />
-    <Compile Include="Comparison\ComparisonColumns.cs" />
-    <Compile Include="Comparison\IComparable.cs" />
+    <Compile Include="Comparison\Querys\SQLiteQueryConstraint.cs" />
+    <Compile Include="Comparison\Querys\SQLiteQueryIndex.cs" />
     <Compile Include="Comparison\Querys\SQLiteQueryStruct.cs" />
     <Compile Include="Comparison\Querys\SQLiteQueryColumn.cs" />
     <Compile Include="Comparison\SQLiteComparison\BaseSQLiteComparison.cs" />
+    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonColumns.cs" />
+    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonConstraints.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonTables.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonTrigger.cs" />
-    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonIndex.cs" />
+    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonIndexs.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonViews.cs" />
     <Compile Include="Comparison\Writers\DifferenceTableWriter.cs" />
     <Compile Include="Connector\ConnectorSQlite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnloadingStructureToXMLs\UnloadingStructureToXML.cs" />
+    <Compile Include="UnloadingStructureToXMLs\UnloadingSQLiteStructureToXML.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

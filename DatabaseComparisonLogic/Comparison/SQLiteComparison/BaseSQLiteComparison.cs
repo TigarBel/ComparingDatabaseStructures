@@ -9,7 +9,7 @@ namespace DatabaseComparisonLogic.Comparison.SQLiteComparison
     /// <summary>
     /// Класс сравнения структуры определенного элемента
     /// </summary>
-    public abstract class BaseSQLiteComparison : BaseComparison , IComparable
+    public abstract class BaseSQLiteComparison : BaseComparison
     {
         /// <summary>
         /// Конструктор класса
@@ -26,8 +26,8 @@ namespace DatabaseComparisonLogic.Comparison.SQLiteComparison
         /// </summary>
         public void Compare()
         {
-            List<string> firstItemName = GetListName(FirstBaseComparison);
-            List<string> secondItemName = GetListName(SecondBaseComparison);
+            List<string> firstItemName = GetListName(new SQLiteQueryStruct(ElementName).SqlQuery, FirstBaseComparison);
+            List<string> secondItemName = GetListName(new SQLiteQueryStruct(ElementName).SqlQuery, SecondBaseComparison);
 
             CompareListOfAllItems(firstItemName, secondItemName);
         }
@@ -36,10 +36,10 @@ namespace DatabaseComparisonLogic.Comparison.SQLiteComparison
         /// </summary>
         /// <param name="baseComparison">Коннектор к базе</param>
         /// <returns>Список таблиц</returns>
-        protected List<string> GetListName(SQLiteConnection baseComparison)
+        protected List<string> GetListName(string query, SQLiteConnection baseComparison)
         {
             DataTable dataTable = new DataTable();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(new SQLiteQueryStruct(ElementName).SqlQuery, baseComparison);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, baseComparison);
             adapter.Fill(dataTable);
             List<string> tableName = new List<string>();
 
@@ -50,7 +50,7 @@ namespace DatabaseComparisonLogic.Comparison.SQLiteComparison
                     tableName.Add((string)dataTable.Rows[i].ItemArray[0]);
                 }
             }
-            else Console.WriteLine("Database(" + baseComparison.DataSource + ") is empty");
+            else Console.WriteLine("Database(" + baseComparison.DataSource + ") is empty: " + query);
             tableName.Sort();
             return tableName;
         }

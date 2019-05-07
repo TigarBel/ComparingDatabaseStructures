@@ -5,17 +5,17 @@ using System.IO;
 
 namespace DatabaseComparisonLogic.UnloadingStructureToXMLs
 {
-    public class UnloadingStructureToXML
+    public class UnloadingSQLiteStructureToXML
     {
 
         private string _sqlQuery = "SELECT * FROM sqlite_master";
 
-        public UnloadingStructureToXML()
+        public UnloadingSQLiteStructureToXML()
         {
 
         }
 
-        public UnloadingStructureToXML(SQLiteConnection sQLiteConnection, string fileName)
+        public UnloadingSQLiteStructureToXML(SQLiteConnection sQLiteConnection, string fileName)
         {
             DataTable dataTable = new DataTable();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(_sqlQuery, sQLiteConnection);
