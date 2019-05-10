@@ -53,17 +53,29 @@
     <Compile Include="Comparison\Querys\SQLiteQueryIndex.cs" />
     <Compile Include="Comparison\Querys\SQLiteQueryStruct.cs" />
     <Compile Include="Comparison\Querys\SQLiteQueryColumn.cs" />
+    <Compile Include="Comparison\Querys\SQLiteQueryRelationships.cs" />
     <Compile Include="Comparison\SQLiteComparison\BaseSQLiteComparison.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonColumns.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonConstraints.cs" />
+    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonRelationships.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonTables.cs" />
-    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonTrigger.cs" />
-    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonIndexs.cs" />
+    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonTriggers.cs" />
+    <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonIndexes.cs" />
     <Compile Include="Comparison\SQLiteComparison\SQLiteComparisonViews.cs" />
     <Compile Include="Comparison\Writers\DifferenceTableWriter.cs" />
     <Compile Include="Connector\ConnectorSQlite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitControls\BaseExecuteCommand.cs" />
+    <Compile Include="UnitControls\ControlCommand.cs" />
+    <Compile Include="UnitControls\EnumCommand.cs" />
+    <Compile Include="UnitControls\ExecuteComparisonColumns.cs" />
+    <Compile Include="UnitControls\ExecuteComparisonRelationships.cs" />
+    <Compile Include="UnitControls\ExecuteComparisonIndexes.cs" />
+    <Compile Include="UnitControls\ExecuteComparisonTriggers.cs" />
+    <Compile Include="UnitControls\ExecuteComparisonConstraints.cs" />
+    <Compile Include="UnitControls\ExecuteComparisonViews.cs" />
+    <Compile Include="UnitControls\UnitControl.cs" />
     <Compile Include="UnloadingStructureToXMLs\UnloadingSQLiteStructureToXML.cs" />
   </ItemGroup>
   <ItemGroup>
