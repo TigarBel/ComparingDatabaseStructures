@@ -1,5 +1,6 @@
 ﻿using DatabaseComparisonLogic.Comparison;
 using DatabaseComparisonLogic.Comparison.Writers;
+using DatabaseComparisonLogic.UnloadingStructureToXMLs;
 using System;
 
 namespace DatabaseComparisonLogic.UnitControls
@@ -18,6 +19,10 @@ namespace DatabaseComparisonLogic.UnitControls
             else if (controlCommand.Command == Command.exit)
             {
 
+            }
+            else if (controlCommand.Command == Command.unloading)
+            {
+                UnloadingSQLiteStructureToXML unloadingSQLiteStructureToXML = new UnloadingSQLiteStructureToXML();
             }
             else if (controlCommand.Command != Command.none)
             {

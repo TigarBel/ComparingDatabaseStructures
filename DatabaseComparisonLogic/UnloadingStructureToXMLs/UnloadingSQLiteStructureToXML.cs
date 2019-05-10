@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using DatabaseComparisonLogic.Connector;
+using System;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 
@@ -11,19 +13,28 @@ namespace DatabaseComparisonLogic.UnloadingStructureToXMLs
 
         public UnloadingSQLiteStructureToXML()
         {
+            Console.WriteLine("Read the file name of datebase: (database.db)");
+            string dataBaseFileName = Console.ReadLine();
+            Console.WriteLine("Read the file name there unloading SQLite DB structure into xml:");
+            string fileName = Console.ReadLine();
 
-        }
-
-        public UnloadingSQLiteStructureToXML(SQLiteConnection sQLiteConnection, string fileName)
-        {
-            DataTable dataTable = new DataTable();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(_sqlQuery, sQLiteConnection);
-            adapter.Fill(dataTable);
-            dataTable.TableName = "DB";////////Заменить
-
-            using (StreamWriter fs = new StreamWriter(fileName)) // XML File Path
+            if (File.Exists(dataBaseFileName))
             {
-                dataTable.WriteXml(fs);
+                ConnectorSQLite connectorSQlite = new ConnectorSQLite(dataBaseFileName);
+
+                DataTable dataTable = new DataTable();
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(_sqlQuery, connectorSQlite.DataBase);
+                adapter.Fill(dataTable);
+                dataTable.TableName = fileName;
+
+                using (StreamWriter fs = new StreamWriter(fileName)) // XML File Path
+                {
+                    dataTable.WriteXml(fs);
+                }
+            }
+            else
+            {
+                Console.WriteLine("This databas is missing!");
             }
         }
     }

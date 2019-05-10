@@ -10,6 +10,7 @@
         indexes,
         constraints,
         relationships,
+        unloading,
         exit,
         none
     }

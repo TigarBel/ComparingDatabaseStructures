@@ -74,6 +74,11 @@ namespace DatabaseComparisonLogic.UnitControls
                         Command = Command.relationships;
                         break;
                     }
+                case "unlo":
+                    {
+                        Command = Command.unloading;
+                        break;
+                    }
                 case "exit":
                     {
                         Command = Command.exit;
@@ -106,6 +111,7 @@ namespace DatabaseComparisonLogic.UnitControls
             helpList.Add("inde - сравнение индексов.");
             helpList.Add("cons - сравнение ограничений.");
             helpList.Add("rela - сравнение отношений.");
+            helpList.Add("unlo - выгрузка структура БД в xml файл.");
             helpList.Add("exit - выход/завершение программы");
             return helpList;
         }

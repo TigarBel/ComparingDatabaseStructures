@@ -15,7 +15,7 @@ namespace DatabaseComparisonLogic
 
         static void Main(string[] args)
         {
-            Console.Write("help - подробная информация\n");
+            Console.Write("help - подробная информация");
             while (_exit != "exit")
             {
                 Console.Write("\n>");
