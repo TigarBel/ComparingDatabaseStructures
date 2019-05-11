@@ -15,9 +15,9 @@ namespace DatabaseComparisonLogic.UnitControls
 
         protected void Connect()
         {
-            Console.WriteLine("Read the file name of datebase: (database.db)");
+            Console.WriteLine("Read the file name of datebase: (..\\database.db)");
             string firstDataBaseFileName = Console.ReadLine();
-            Console.WriteLine("Read the file name of datebase: (database.db)");
+            Console.WriteLine("Read the file name of datebase: (..\\database.db)");
             string secondDataBaseFileName = Console.ReadLine();
 
             if (File.Exists(firstDataBaseFileName) && File.Exists(secondDataBaseFileName))

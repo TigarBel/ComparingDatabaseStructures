@@ -103,16 +103,16 @@ namespace DatabaseComparisonLogic.UnitControls
         public List<string> Help()
         {
             List<string> helpList = new List<string>();
-            helpList.Add("help - подробная информация.");
-            helpList.Add("comp - полное сравнение двух БД.");
-            helpList.Add("colu - сравнение столбцов.");
-            helpList.Add("view - сравнение представлений.");
-            helpList.Add("trig - сравнение тригеров.");
-            helpList.Add("inde - сравнение индексов.");
-            helpList.Add("cons - сравнение ограничений.");
-            helpList.Add("rela - сравнение отношений.");
-            helpList.Add("unlo - выгрузка структура БД в xml файл.");
-            helpList.Add("exit - выход/завершение программы");
+            helpList.Add("help - detailed information.");
+            helpList.Add("comp - full comparison of two databases.");
+            helpList.Add("colu - column comparison.");
+            helpList.Add("view - comparison of views.");
+            helpList.Add("trig - trigger comparison.");
+            helpList.Add("inde - index comparison.");
+            helpList.Add("cons - comparison of restrictions.");
+            helpList.Add("rela - relationship comparison.");
+            helpList.Add("unlo - unloading database structure to xml file.");
+            helpList.Add("exit - exit / end of program");
             return helpList;
         }
     }

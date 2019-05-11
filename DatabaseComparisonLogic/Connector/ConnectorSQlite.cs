@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.IO;
 
 namespace DatabaseComparisonLogic.Connector
 {
@@ -27,11 +28,18 @@ namespace DatabaseComparisonLogic.Connector
             Commad = new SQLiteCommand();
             try
             {
-                DataBase = new SQLiteConnection("Data Source=" + DataBaseFileName + ";Version=3;");
-                Commad.Connection = DataBase;
+                if (File.Exists(dbFileName))
+                {
+                    DataBase = new SQLiteConnection("Data Source=" + DataBaseFileName + ";Version=3;");
+                    Commad.Connection = DataBase;
 
-                Open();
-                Close();
+                    Open();
+                    Close();
+                }
+                else
+                {
+                    throw new Exception("This database file name not exists!");
+                }
             }
             catch (Exception ex)
             {

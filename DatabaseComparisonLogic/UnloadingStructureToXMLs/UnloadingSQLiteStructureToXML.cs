@@ -13,7 +13,7 @@ namespace DatabaseComparisonLogic.UnloadingStructureToXMLs
 
         public UnloadingSQLiteStructureToXML()
         {
-            Console.WriteLine("Read the file name of datebase: (database.db)");
+            Console.WriteLine("Read the file name of datebase: (..\\database.db)");
             string dataBaseFileName = Console.ReadLine();
             Console.WriteLine("Read the file name there unloading SQLite DB structure into xml:");
             string fileName = Console.ReadLine();

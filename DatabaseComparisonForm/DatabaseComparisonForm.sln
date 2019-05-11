@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseComparisonForm", "DatabaseComparisonForm\DatabaseComparisonForm.csproj", "{BB0D06BE-1EBD-4091-B338-FA183632D4F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseComparisonLogic", "..\DatabaseComparisonLogic\DatabaseComparisonLogic.csproj", "{FD0F1DD6-4483-4CBD-94BC-9C56EC261DC1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB0D06BE-1EBD-4091-B338-FA183632D4F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0D06BE-1EBD-4091-B338-FA183632D4F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0D06BE-1EBD-4091-B338-FA183632D4F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0D06BE-1EBD-4091-B338-FA183632D4F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD0F1DD6-4483-4CBD-94BC-9C56EC261DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD0F1DD6-4483-4CBD-94BC-9C56EC261DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD0F1DD6-4483-4CBD-94BC-9C56EC261DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD0F1DD6-4483-4CBD-94BC-9C56EC261DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8B6D95D-A272-49CD-A287-C081C30020A6}
+	EndGlobalSection
+EndGlobal
