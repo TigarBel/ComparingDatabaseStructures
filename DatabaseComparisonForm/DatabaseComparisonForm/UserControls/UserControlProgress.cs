@@ -78,7 +78,6 @@ namespace DatabaseComparisonForm.UserControls
 
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
-            Progress = false;
             this.Visible = false;
             this.Enabled = false;
         }

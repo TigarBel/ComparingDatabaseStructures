@@ -87,6 +87,7 @@
             this.dataGridViewColumns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewColumns.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewColumns.Name = "dataGridViewColumns";
+            this.dataGridViewColumns.ReadOnly = true;
             this.dataGridViewColumns.Size = new System.Drawing.Size(532, 291);
             this.dataGridViewColumns.TabIndex = 2;
             // 
@@ -135,6 +136,7 @@
             this.dataGridViewViews.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewViews.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewViews.Name = "dataGridViewViews";
+            this.dataGridViewViews.ReadOnly = true;
             this.dataGridViewViews.Size = new System.Drawing.Size(532, 291);
             this.dataGridViewViews.TabIndex = 3;
             // 
@@ -156,6 +158,7 @@
             this.dataGridViewTriggers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTriggers.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewTriggers.Name = "dataGridViewTriggers";
+            this.dataGridViewTriggers.ReadOnly = true;
             this.dataGridViewTriggers.Size = new System.Drawing.Size(532, 291);
             this.dataGridViewTriggers.TabIndex = 3;
             // 
@@ -177,6 +180,7 @@
             this.dataGridViewIndexes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIndexes.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewIndexes.Name = "dataGridViewIndexes";
+            this.dataGridViewIndexes.ReadOnly = true;
             this.dataGridViewIndexes.Size = new System.Drawing.Size(532, 291);
             this.dataGridViewIndexes.TabIndex = 3;
             // 
@@ -198,6 +202,7 @@
             this.dataGridViewConstraints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewConstraints.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewConstraints.Name = "dataGridViewConstraints";
+            this.dataGridViewConstraints.ReadOnly = true;
             this.dataGridViewConstraints.Size = new System.Drawing.Size(532, 291);
             this.dataGridViewConstraints.TabIndex = 3;
             // 
@@ -219,11 +224,13 @@
             this.dataGridViewRelationships.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRelationships.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewRelationships.Name = "dataGridViewRelationships";
+            this.dataGridViewRelationships.ReadOnly = true;
             this.dataGridViewRelationships.Size = new System.Drawing.Size(532, 291);
             this.dataGridViewRelationships.TabIndex = 3;
             // 
             // comboBoxUnloadDatabase
             // 
+            this.comboBoxUnloadDatabase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUnloadDatabase.FormattingEnabled = true;
             this.comboBoxUnloadDatabase.Location = new System.Drawing.Point(333, 5);
             this.comboBoxUnloadDatabase.Name = "comboBoxUnloadDatabase";

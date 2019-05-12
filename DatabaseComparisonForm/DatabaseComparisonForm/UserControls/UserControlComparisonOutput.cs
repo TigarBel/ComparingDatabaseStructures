@@ -18,6 +18,10 @@ namespace DatabaseComparisonForm.UserControls
     {
         private List<DataGridView> _dataGridViews = new List<DataGridView>();
 
+        private string _fileNameSourseDataBase;
+
+        private string _fileNameTargetDataBase;
+
         public UserControlComparisonOutput()
         {
             InitializeComponent();
@@ -38,7 +42,9 @@ namespace DatabaseComparisonForm.UserControls
 
         private void ButtonConnect_Click(object sender, EventArgs e)
         {
-
+            Output = true;
+            this.Enabled = false;
+            this.Visible = false;
         }
 
         public bool Output { get; set; }
@@ -49,9 +55,10 @@ namespace DatabaseComparisonForm.UserControls
             {
                 foreach (DataGridView dataGridView in _dataGridViews)
                 {
-                    dataGridView.Columns.Add(value.DataBaseFileName, value.DataBaseFileName);
+                    dataGridView.Columns.Add(value.DataBase.DataSource, value.DataBase.DataSource);
                 }
-                comboBoxUnloadDatabase.Items.Add(value.DataBaseFileName);
+                comboBoxUnloadDatabase.Items.Add(value.DataBase.DataSource);
+                _fileNameSourseDataBase = value.DataBaseFileName;
             }
         }
 
@@ -61,9 +68,10 @@ namespace DatabaseComparisonForm.UserControls
             {
                 foreach (DataGridView dataGridView in _dataGridViews)
                 {
-                    dataGridView.Columns.Add(value.DataBaseFileName, value.DataBaseFileName);
+                    dataGridView.Columns.Add(value.DataBase.DataSource, value.DataBase.DataSource);
                 }
-                comboBoxUnloadDatabase.Items.Add(value.DataBaseFileName);
+                comboBoxUnloadDatabase.Items.Add(value.DataBase.DataSource);
+                _fileNameTargetDataBase = value.DataBaseFileName;
             }
         }
 
@@ -123,34 +131,49 @@ namespace DatabaseComparisonForm.UserControls
 
         private void ButtonUnloadToXML_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "XML File|*.xml";
-            saveFileDialog.Title = "Unloading to xml.";
-            saveFileDialog.ShowDialog();
-
-            if (saveFileDialog.FileName != "")
+            if(comboBoxUnloadDatabase.SelectedItem != null)
             {
-                if (File.Exists(comboBoxUnloadDatabase.SelectedItem.ToString()))
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "XML File|*.xml";
+                saveFileDialog.Title = "Unloading to xml.";
+                saveFileDialog.ShowDialog();
+
+                if (saveFileDialog.FileName != "")
                 {
-                    ConnectorSQLite connectorSQlite = new ConnectorSQLite(comboBoxUnloadDatabase.SelectedItem.ToString());
-
-                    DataTable dataTable = new DataTable();
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT * FROM sqlite_master", connectorSQlite.DataBase);
-                    adapter.Fill(dataTable);
-                    dataTable.TableName = saveFileDialog.FileName;
-
-                    using (StreamWriter fs = new StreamWriter(saveFileDialog.FileName)) // XML File Path
+                    string fileName;
+                    if(comboBoxUnloadDatabase.SelectedIndex == 0)
                     {
-                        dataTable.WriteXml(fs);
+                        fileName = _fileNameSourseDataBase;
+                    }
+                    else
+                    {
+                        fileName = _fileNameTargetDataBase;
+                    }
+
+                    if (File.Exists(fileName))
+                    {
+                        ConnectorSQLite connectorSQlite = new ConnectorSQLite(fileName);
+
+                        DataTable dataTable = new DataTable();
+                        SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT * FROM sqlite_master", connectorSQlite.DataBase);
+                        adapter.Fill(dataTable);
+                        dataTable.TableName = saveFileDialog.FileName;
+
+                        using (StreamWriter fs = new StreamWriter(saveFileDialog.FileName)) // XML File Path
+                        {
+                            dataTable.WriteXml(fs);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("This databas is missing!");
                     }
                 }
-                else
-                {
-                    Console.WriteLine("This databas is missing!");
-                }
             }
-
-
+            else
+            {
+                DialogResult messageBox = MessageBox.Show("Choice database.");
+            }
         }
     }
 }

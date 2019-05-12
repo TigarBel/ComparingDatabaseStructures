@@ -39,7 +39,6 @@
             this.textBoxTargetDatabase = new System.Windows.Forms.TextBox();
             this.labelDatabaseTarget = new System.Windows.Forms.Label();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonReturn = new System.Windows.Forms.Button();
             this.groupBoxConnectSourseDatabase.SuspendLayout();
             this.groupBoxConnectTargetDatabase.SuspendLayout();
             this.SuspendLayout();
@@ -146,7 +145,7 @@
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(243, 143);
+            this.buttonNext.Location = new System.Drawing.Point(392, 143);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 3;
@@ -154,21 +153,10 @@
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.ButtonNext_Click);
             // 
-            // buttonReturn
-            // 
-            this.buttonReturn.Enabled = false;
-            this.buttonReturn.Location = new System.Drawing.Point(338, 143);
-            this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(75, 23);
-            this.buttonReturn.TabIndex = 4;
-            this.buttonReturn.Text = "Return";
-            this.buttonReturn.UseVisualStyleBackColor = true;
-            // 
             // UserControlConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonReturn);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.groupBoxConnectTargetDatabase);
             this.Controls.Add(this.groupBoxConnectSourseDatabase);
@@ -195,6 +183,5 @@
         private System.Windows.Forms.TextBox textBoxTargetDatabase;
         private System.Windows.Forms.Label labelDatabaseTarget;
         private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.Button buttonReturn;
     }
 }
